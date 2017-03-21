@@ -1,30 +1,38 @@
-package test_suite;
+package ui_model;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 /**
  * Created by okunets on 20.03.2017.
  */
 public class GoogleHomePage extends AbstractPage {
 
-    public GoogleHomePage(WebDriver driver) {
-        super(driver);
-    }
+
+
     @FindBy(css ="#lst-ib" )
     private WebElement searchBox;
 
-    String  a="gffg";
-    @FindBy(css = ".jsb > center:nth-child(1) > input:nth-child(1)")
+    @FindBy(css = "#_fZl")
     private WebElement searchButton;
 
+    public GoogleHomePage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver,this);
+    }
 
-    public GoogleHomePage inputQuery(String query){
+    public GoogleResultPage inputQuery(String query){
         searchBox.sendKeys(query);
-        return this;
+        return new GoogleResultPage(driver);
     }
 
-    public GoogleHomePage clickSearchButtorn(){
-        
+    public GoogleResultPage clickSearchButton(){
+        searchButton.click();
+        return new GoogleResultPage(driver);
     }
+
+
 }

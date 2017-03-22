@@ -8,9 +8,8 @@ import cucumber.api.java.en.When;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import ui_model.GoogleHomePage;
-import ui_model.GoogleResultPage;
+import ui_model.page.result.AbstractGoogleResultPage;
+import ui_model.page.GoogleHomePage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,20 +23,21 @@ import static org.junit.Assert.assertTrue;
  * Created by okunets on 21.03.2017.
  */
 public class GoogleHomeStepDefinition {
+    private WebDriver driver;
     private GoogleHomePage googleHomePage;
-    private GoogleResultPage googleResultPage;
+    private AbstractGoogleResultPage abstractGoogleResultPage;
     private Properties properties;
     private InputStream inputStream;
 
-    public GoogleResultPage getGoogleResultPage() {
-        return googleResultPage;
+    public AbstractGoogleResultPage getAbstractGoogleResultPage() {
+        return abstractGoogleResultPage;
     }
 
-    public void setGoogleResultPage(GoogleResultPage googleResultPage) {
-        this.googleResultPage = googleResultPage;
+    public void setAbstractGoogleResultPage(AbstractGoogleResultPage abstractGoogleResultPage) {
+        this.abstractGoogleResultPage = abstractGoogleResultPage;
     }
 
-    private WebDriver driver;
+
 
 
     @Before
@@ -69,19 +69,19 @@ public class GoogleHomeStepDefinition {
 
     @When("^I enter \"([^\"]*)\" into searchfield$")
     public void i_enter_into_searchfield(String arg1) throws Throwable {
-        googleResultPage = googleHomePage.inputQuery(arg1);
+        googleHomePage.inputQuery(arg1);
     }
 
     @And("^I click on \"([^\"]*)\" button$")
     public void i_click_on_button(String arg1) throws Throwable {
-        googleResultPage = googleHomePage.clickSearchButton();
-        googleResultPage.setProperties(properties);
+        abstractGoogleResultPage = googleHomePage.clickSearchButton();
+        abstractGoogleResultPage.setProperties(properties);
     }
 
     @Then("^I check whether Showing results for translate\\.google\\.com is displayed$")
     public void i_check_whether_Showing_results_for_translate_google_com_is_displayed() throws Throwable {
-        System.out.println(googleResultPage.getValueOfShowingResultsFor());
-        assertTrue(googleResultPage.getValueOfShowingResultsFor().equals(properties.getProperty("expected_result_string")));
+        System.out.println(abstractGoogleResultPage.getValueOfShowingResultsFor());
+        assertTrue(abstractGoogleResultPage.getValueOfShowingResultsFor().equals(properties.getProperty("expected_result_string")));
 
     }
 

@@ -1,38 +1,39 @@
-package ui_model;
+package ui_model.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ui_model.ResultPageName;
+import ui_model.page.result.AbstractGoogleResultPage;
 
 /**
  * Created by okunets on 20.03.2017.
  */
 public class GoogleHomePage extends AbstractPage {
-
-
-
     @FindBy(css ="#lst-ib" )
     private WebElement searchBox;
-
     @FindBy(css = "#_fZl")
     private WebElement searchButton;
-
+    private String query;
     public GoogleHomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
-    public GoogleResultPage inputQuery(String query){
+    public GoogleHomePage inputQuery(String query){
+        this.query=query;
         searchBox.sendKeys(query);
-        return new GoogleResultPage(driver);
+        return this;
     }
 
-    public GoogleResultPage clickSearchButton(){
+    public AbstractGoogleResultPage clickSearchButton(){
         searchButton.click();
-        return new GoogleResultPage(driver);
+        return firstResultPageFactory
+                .getFirstGoogleResultPage(ResultPageName.valueOf(query.toUpperCase().replaceAll(" ","_")));
     }
+
+
 
 
 }

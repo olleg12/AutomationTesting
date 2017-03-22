@@ -1,7 +1,8 @@
-package ui_model;
+package ui_model.page;
 
+import factory.FirstResultPageFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import ui_model.page.GoogleHomePage;
 
 import java.util.Properties;
 
@@ -12,6 +13,7 @@ public abstract class AbstractPage {
 
     protected WebDriver driver;
     protected Properties properties;
+    protected FirstResultPageFactory firstResultPageFactory;
 
     public Properties getProperties() {
         return properties;
@@ -23,7 +25,7 @@ public abstract class AbstractPage {
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
-
+        this.firstResultPageFactory=new FirstResultPageFactory(driver);
     }
 
     public GoogleHomePage navigateToHomePage() {
@@ -31,7 +33,7 @@ public abstract class AbstractPage {
         return new GoogleHomePage(driver);
     }
 
-//    public abstract AbstractPage click(WebElement element);
+
 
     public void close() {
         driver.close();

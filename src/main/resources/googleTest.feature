@@ -1,12 +1,12 @@
 Feature: To test google
 
-  @translate
+
   Scenario: To test the result of translate google com query
     When I enter "translate google com" into searchfield
     And  I click on "Google Search" button
     Then I check whether Showing results for translate.google.com is displayed
 
-  @translate
+#  @translate
   Scenario: To test google translate page
     When I enter "translate google com" into searchfield
     And  I click on "Google Search" button

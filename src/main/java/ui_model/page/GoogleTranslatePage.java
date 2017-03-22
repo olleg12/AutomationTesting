@@ -1,9 +1,8 @@
-package ui_model;
+package ui_model.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -54,6 +53,7 @@ public class GoogleTranslatePage extends AbstractPage {
         System.out.println(romanianDiv.getText());
         Thread.sleep(1500);
         romanianDiv.click();
+
 
         return this;
     }

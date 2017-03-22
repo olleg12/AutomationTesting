@@ -1,12 +1,11 @@
 package test_suite;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import ui_model.GoogleHomePage;
-import ui_model.GoogleResultPage;
-import ui_model.GoogleTranslatePage;
+import ui_model.page.result.AbstractGoogleResultPage;
+import ui_model.page.GoogleTranslatePage;
+import ui_model.page.result.first.FirstGoogleResultPageTranslate;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -15,14 +14,14 @@ import static org.junit.Assert.assertTrue;
  * Created by okunets on 21.03.2017.
  */
 public class GoogleTranslateStepDefinitions {
-    private GoogleResultPage googleResultPage;
+    private AbstractGoogleResultPage abstractGoogleResultPage;
     private GoogleTranslatePage googleTranslatePage;
     private GoogleHomeStepDefinition definition;
     private String previousTranslation;
 
     public GoogleTranslateStepDefinitions(GoogleHomeStepDefinition definition) {
         this.definition = definition;
-        this.googleResultPage=definition.getGoogleResultPage();
+        this.abstractGoogleResultPage =definition.getAbstractGoogleResultPage();
     }
 
     @When("^I fill in first field Apple$")
@@ -44,7 +43,10 @@ public class GoogleTranslateStepDefinitions {
 
     @And("^I click on the first link$")
     public void iClickOnTheFirstLink() throws Throwable {
-        googleTranslatePage = googleResultPage.clickOnGoogleTranslateLink();
+        if (abstractGoogleResultPage instanceof FirstGoogleResultPageTranslate){
+            FirstGoogleResultPageTranslate firstGoogleResultPageTranslate = (FirstGoogleResultPageTranslate) this.abstractGoogleResultPage;
+            googleTranslatePage = firstGoogleResultPageTranslate.clickOnFirstLink();
+        }
     }
 
     @And("^I click on languages dropdown$")

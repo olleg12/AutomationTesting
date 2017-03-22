@@ -52,9 +52,9 @@ public class GoogleTranslatePage extends AbstractPage {
 //        Actions action = new Actions(driver);
 //        action.moveToElement(romanianDiv).build().perform();
         System.out.println(romanianDiv.getText());
-        Thread.sleep(5000);
+        Thread.sleep(1500);
         romanianDiv.click();
-        Thread.sleep(5000);
+
         return this;
     }
 

@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class GoogleResultPage extends AbstractPage {
     private WebElement googleTranslateLink;
+    private int pageNumber;
     @FindBy(css = ".sp_cnt > a:nth-child(2) > b:nth-child(1) > i:nth-child(1)")
     WebElement resultLink;
     @FindBy(css = ".sp_cnt > span:nth-child(1)")

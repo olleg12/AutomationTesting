@@ -32,7 +32,7 @@ public class GoogleTranslatePage extends AbstractPage {
     public String getTranslation() {
         if (outputField == null) {
             WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(properties.getProperty("translate_output_xpath"))));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='result_box']/span")));
             outputField = driver.findElement(By.xpath(properties.getProperty("translate_output_xpath")));
         }
         return outputField.getText();
@@ -48,9 +48,9 @@ public class GoogleTranslatePage extends AbstractPage {
 
     public GoogleTranslatePage chooseLanguageToTranslateIn() throws InterruptedException {
         if (romanianDiv == null)
-            romanianDiv = driver.findElement(By.id(":34"));
-        Actions action = new Actions(driver);
-        action.moveToElement(romanianDiv).build().perform();
+            romanianDiv = driver.findElement(By.xpath(".//*[@id=':43']/div"));
+//        Actions action = new Actions(driver);
+//        action.moveToElement(romanianDiv).build().perform();
         System.out.println(romanianDiv.getText());
         Thread.sleep(5000);
         romanianDiv.click();

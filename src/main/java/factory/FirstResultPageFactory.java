@@ -1,10 +1,10 @@
 package factory;
 
 import org.openqa.selenium.WebDriver;
-import ui_model.page.result.first.FirstGoogleResultPage;
-import ui_model.ResultPageName;
-import ui_model.page.result.first.FirstGoogleResultPageApple;
-import ui_model.page.result.first.FirstGoogleResultPageTranslate;
+import ui.model.page.result.first.FirstGoogleResultPage;
+import ui.model.ResultPageName;
+import ui.model.page.result.first.FirstGoogleResultPageApple;
+import ui.model.page.result.first.FirstGoogleResultPageTranslate;
 
 /**
  * Created by okunets on 22.03.2017.

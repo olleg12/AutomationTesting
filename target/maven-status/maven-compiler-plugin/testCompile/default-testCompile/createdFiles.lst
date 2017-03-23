@@ -1,0 +1,5 @@
+test_suite\CommonStepDefinitions.class
+test_suite\GoogleHomeStepDefinition.class
+test_suite\CucumberRunner.class
+test_suite\GoogleTranslateStepDefinitions.class
+test_suite\GoogleAppleStepDifinitions.class

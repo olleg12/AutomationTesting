@@ -21,6 +21,11 @@ public class GoogleHomePage extends AbstractPage {
         PageFactory.initElements(driver,this);
     }
 
+    public GoogleHomePage navigateToHomePage() {
+        driver.navigate().to(properties.getProperty("google_home_page"));
+        return this;
+    }
+
     public GoogleHomePage inputQuery(String query){
         this.query=query;
         searchBox.sendKeys(query);

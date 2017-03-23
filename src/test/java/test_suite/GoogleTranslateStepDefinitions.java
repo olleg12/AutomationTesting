@@ -16,24 +16,21 @@ import static org.junit.Assert.assertTrue;
 public class GoogleTranslateStepDefinitions {
     private AbstractGoogleResultPage abstractGoogleResultPage;
     private GoogleTranslatePage googleTranslatePage;
-    private GoogleHomeStepDefinition definition;
     private String previousTranslation;
 
-    public GoogleTranslateStepDefinitions(GoogleHomeStepDefinition definition) {
-        this.definition = definition;
-        this.abstractGoogleResultPage =definition.getAbstractGoogleResultPage();
+    public GoogleTranslateStepDefinitions(CommonStepDefinitions definition) {
+        this.abstractGoogleResultPage = definition.getAbstractGoogleResultPage();
     }
 
     @When("^I fill in first field Apple$")
     public void i_fill_in_first_field_Apple() throws Throwable {
-         googleTranslatePage.inputApple();
+        googleTranslatePage.inputApple();
     }
 
     @When("^I save the previous translation$")
     public void i_save_the_previous_translation() throws Throwable {
-        previousTranslation=googleTranslatePage.getTranslation();
+        previousTranslation = googleTranslatePage.getTranslation();
     }
-
 
 
     @Then("^I compare the translations$")
@@ -43,7 +40,7 @@ public class GoogleTranslateStepDefinitions {
 
     @And("^I click on the first link$")
     public void iClickOnTheFirstLink() throws Throwable {
-        if (abstractGoogleResultPage instanceof FirstGoogleResultPageTranslate){
+        if (abstractGoogleResultPage instanceof FirstGoogleResultPageTranslate) {
             FirstGoogleResultPageTranslate firstGoogleResultPageTranslate = (FirstGoogleResultPageTranslate) this.abstractGoogleResultPage;
             googleTranslatePage = firstGoogleResultPageTranslate.clickOnFirstLink();
         }
@@ -56,6 +53,6 @@ public class GoogleTranslateStepDefinitions {
 
     @And("^I choose the language to translate in$")
     public void iChooseTheLanguageToTranslateIn() throws Throwable {
-     googleTranslatePage.chooseLanguageToTranslateIn();
+        googleTranslatePage.chooseLanguageToTranslateIn();
     }
 }

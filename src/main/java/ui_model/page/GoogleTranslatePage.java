@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class GoogleTranslatePage extends AbstractPage {
 
-    private WebElement inputField;
-    private WebElement outputField;
     private WebElement languagesDropdown;
     private WebElement romanianDiv;
 
@@ -23,17 +21,15 @@ public class GoogleTranslatePage extends AbstractPage {
     public GoogleTranslatePage inputApple() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("source")));
-        inputField = driver.findElement(By.id("source"));
+        WebElement inputField = driver.findElement(By.id("source"));
         inputField.sendKeys(properties.getProperty("apple_query"));
         return this;
     }
 
     public String getTranslation() {
-        if (outputField == null) {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='result_box']/span")));
-            outputField = driver.findElement(By.xpath(properties.getProperty("translate_output_xpath")));
-        }
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='result_box']/span")));
+        WebElement outputField = driver.findElement(By.xpath("//*[@id=\"result_box\"]/span"));
         return outputField.getText();
     }
 
@@ -41,20 +37,14 @@ public class GoogleTranslatePage extends AbstractPage {
         if (languagesDropdown == null)
             languagesDropdown = driver.findElement(By.id(properties.getProperty("language_dropdown_id")));
         languagesDropdown.click();
-        //Thread.sleep(5000);
         return this;
     }
 
     public GoogleTranslatePage chooseLanguageToTranslateIn() throws InterruptedException {
         if (romanianDiv == null)
-            romanianDiv = driver.findElement(By.xpath(".//*[@id=':43']/div"));
-//        Actions action = new Actions(driver);
-//        action.moveToElement(romanianDiv).build().perform();
+            romanianDiv = driver.findElement(By.xpath(".//*[@id='gt-tl-sugg']/div[2]"));
         System.out.println(romanianDiv.getText());
-        Thread.sleep(1500);
         romanianDiv.click();
-
-
         return this;
     }
 

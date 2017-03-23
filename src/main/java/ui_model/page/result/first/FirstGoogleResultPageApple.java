@@ -11,7 +11,9 @@ import ui_model.page.result.AbstractGoogleResultPage;
 import ui_model.page.result.other.OtherGoogleResultPageApple;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by okunets on 22.03.2017.
@@ -32,7 +34,8 @@ public class FirstGoogleResultPageApple extends FirstGoogleResultPage {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("flyr")));
         WebElement pageNumberLink = driver.findElement(By.cssSelector
-                ("#nav > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(" + String.valueOf(number + 1) + ") > a:nth-child(1)"));
+                (
+                        String.format("#nav > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(%d) > a:nth-child(1)",number+1)));
         pageNumberLink.click();
         return new OtherGoogleResultPageApple(driver);
     }

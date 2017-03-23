@@ -2,7 +2,7 @@ package test_suite;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import ui_model.page.GoogleHomePage;
+import org.junit.Assert;
 import ui_model.page.result.AbstractGoogleResultPage;
 
 import java.util.LinkedList;
@@ -12,12 +12,10 @@ import java.util.List;
  * Created by okunets on 22.03.2017.
  */
 public class GoogleAppleStepDifinitions {
-    private GoogleHomeStepDefinition definition;
     private AbstractGoogleResultPage abstractGoogleResultPage;
     private List<Integer> resultLinkNumbers;
 
-    public GoogleAppleStepDifinitions(GoogleHomeStepDefinition definition) {
-        this.definition = definition;
+    public GoogleAppleStepDifinitions(CommonStepDefinitions definition) {
         this.abstractGoogleResultPage=definition.getAbstractGoogleResultPage();
         this.resultLinkNumbers=new  LinkedList<>();
     }
@@ -31,11 +29,11 @@ public class GoogleAppleStepDifinitions {
     @When("^I navigate to (\\d+) page$")
     public void i_navigete_to_nd_page(int number) throws Throwable {
         this.abstractGoogleResultPage = this.abstractGoogleResultPage.navigateToPageNumber(number);
-        System.out.println(resultLinkNumbers);
     }
 
     @Then("^I check whether the number of results is the same on the above mentioned pages$")
-    public void i_check_whether_the_number_of_results_is_the_same_on_the_above_mentioned_pages() throws Throwable {
+    public void checkResultNumberEquality() throws Throwable {
         System.out.println(resultLinkNumbers);
+        Assert.assertFalse(resultLinkNumbers.get(0).equals(resultLinkNumbers.get(1))&& resultLinkNumbers.get(1).equals(resultLinkNumbers.get(2)));
     }
 }

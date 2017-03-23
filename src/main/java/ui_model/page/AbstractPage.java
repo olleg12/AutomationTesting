@@ -28,10 +28,7 @@ public abstract class AbstractPage {
         this.firstResultPageFactory=new FirstResultPageFactory(driver);
     }
 
-    public GoogleHomePage navigateToHomePage() {
-        driver.navigate().to(properties.getProperty("google_home_page"));
-        return new GoogleHomePage(driver);
-    }
+
 
 
 

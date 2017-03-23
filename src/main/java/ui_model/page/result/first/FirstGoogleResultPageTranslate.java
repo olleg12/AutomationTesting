@@ -11,8 +11,6 @@ import ui_model.page.result.other.OtherGoogleResultPageTranslate;
  * Created by okunets on 22.03.2017.
  */
 public class FirstGoogleResultPageTranslate extends FirstGoogleResultPage {
-    @FindBy
-    private WebElement googleTranslateLink;
     public FirstGoogleResultPageTranslate(WebDriver driver) {
         super(driver);
     }

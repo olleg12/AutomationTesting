@@ -21,10 +21,6 @@ public class OtherGoogleResultPageApple extends OtherGoogleResultPage {
 
     @Override
     public AbstractGoogleResultPage navigateToPageNumber(int number) {
-//        if (pageNumber==number){
-//            return this;
-//        }
-//        else
             if (number==1){
             return new FirstGoogleResultPageApple(driver);
         }

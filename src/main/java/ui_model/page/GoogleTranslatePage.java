@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by okunets on 21.03.2017.
  */
 public class GoogleTranslatePage extends AbstractPage {
-
     private WebElement languagesDropdown;
     private WebElement romanianDiv;
 
@@ -19,7 +18,6 @@ public class GoogleTranslatePage extends AbstractPage {
     }
 
     public GoogleTranslatePage inputApple() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("source")));
         WebElement inputField = driver.findElement(By.id("source"));
         inputField.sendKeys(properties.getProperty("apple_query"));

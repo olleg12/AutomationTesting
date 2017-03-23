@@ -16,6 +16,7 @@ public class GoogleHomePage extends AbstractPage {
     @FindBy(css = "#_fZl")
     private WebElement searchButton;
     private String query;
+
     public GoogleHomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);

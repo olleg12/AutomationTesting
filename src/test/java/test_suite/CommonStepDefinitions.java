@@ -25,10 +25,6 @@ public class CommonStepDefinitions {
         return abstractGoogleResultPage;
     }
 
-    public GoogleHomePage getGoogleHomePage() {
-        return googleHomePage;
-    }
-
     @Before
     public void setUp() {
         InputStream propertiesFile = getClass().getClassLoader().getResourceAsStream("config.properties");

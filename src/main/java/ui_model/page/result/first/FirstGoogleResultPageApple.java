@@ -4,16 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ui_model.page.result.AbstractGoogleResultPage;
 import ui_model.page.result.other.OtherGoogleResultPageApple;
 
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * Created by okunets on 22.03.2017.
@@ -26,12 +22,10 @@ public class FirstGoogleResultPageApple extends FirstGoogleResultPage {
 
     public FirstGoogleResultPageApple(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
     }
 
     @Override
     public AbstractGoogleResultPage navigateToPageNumber(int number) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("flyr")));
         WebElement pageNumberLink = driver.findElement(By.cssSelector
                 (
@@ -42,7 +36,6 @@ public class FirstGoogleResultPageApple extends FirstGoogleResultPage {
 
     @Override
     public int calculateResultsNumber() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".rc>.r>a")));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("._Iqg")));
         List<WebElement> webElements = new ArrayList<>();

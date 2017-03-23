@@ -21,8 +21,7 @@ public class GoogleHomeStepDefinition {
 
     @Then("^I check whether Showing results for translate\\.google\\.com is displayed$")
     public void i_check_whether_Showing_results_for_translate_google_com_is_displayed() throws Throwable {
-        System.out.println(abstractGoogleResultPage.getValueOfShowingResultsFor());
-        assertTrue(abstractGoogleResultPage.getValueOfShowingResultsFor().equals(abstractGoogleResultPage.getProperties().getProperty("expected_result_string")));
+        assertTrue(abstractGoogleResultPage.getValueOfShowingResultsFor().equals("Showing results for translate.google.com"));
 
     }
 

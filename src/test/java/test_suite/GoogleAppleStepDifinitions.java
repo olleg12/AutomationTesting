@@ -34,6 +34,6 @@ public class GoogleAppleStepDifinitions {
     @Then("^I check whether the number of results is the same on the above mentioned pages$")
     public void checkResultNumberEquality() throws Throwable {
         System.out.println(resultLinkNumbers);
-        Assert.assertFalse(resultLinkNumbers.get(0).equals(resultLinkNumbers.get(1))&& resultLinkNumbers.get(1).equals(resultLinkNumbers.get(2)));
+        Assert.assertTrue(resultLinkNumbers.get(0).equals(resultLinkNumbers.get(1))&& resultLinkNumbers.get(1).equals(resultLinkNumbers.get(2)));
     }
 }

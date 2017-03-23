@@ -12,9 +12,4 @@ public abstract class OtherGoogleResultPage extends AbstractGoogleResultPage {
         super(driver);
     }
 
-
-//    public AbstractGoogleResultPage clickOnFirstLink() {
-////        throw new NotImplementedException()
-//        return null;
-//    }
 }

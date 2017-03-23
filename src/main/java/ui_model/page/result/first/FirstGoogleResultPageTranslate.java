@@ -3,6 +3,7 @@ package ui_model.page.result.first;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import ui_model.page.GoogleTranslatePage;
 import ui_model.page.result.AbstractGoogleResultPage;
 import ui_model.page.result.other.OtherGoogleResultPageTranslate;
@@ -22,11 +23,10 @@ public class FirstGoogleResultPageTranslate extends FirstGoogleResultPage {
 
     @Override
     public AbstractGoogleResultPage navigateToPageNumber(int number) {
-        if (number==pageNumber){
-            return this;
-        }
-        return new OtherGoogleResultPageTranslate(driver);
+        throw new NotImplementedException();
     }
+
+
 
     public GoogleTranslatePage clickOnFirstLink() {
         navigateToFirstLink();

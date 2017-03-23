@@ -15,6 +15,7 @@ import java.util.List;
  * Created by okunets on 22.03.2017.
  */
 public class OtherGoogleResultPageApple extends OtherGoogleResultPage {
+
     public OtherGoogleResultPageApple(WebDriver driver) {
         super(driver);
     }
@@ -29,9 +30,8 @@ public class OtherGoogleResultPageApple extends OtherGoogleResultPage {
 
     @Override
     public int calculateResultsNumber() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".rc>.r>a"),6));
         List<WebElement> elements = driver.findElements(By.cssSelector(".rc>.r>a"));
-        return  elements.size();
+        return  resultLinks.size();
     }
 }

@@ -20,7 +20,6 @@ public abstract class AbstractGoogleResultPage extends AbstractPage {
     private WebElement firstResultLink;
     @FindBy(css = ".sp_cnt > a:nth-child(2) > b:nth-child(1) > i:nth-child(1)")
     private WebElement resultLink;
-
     @FindBy(css = ".sp_cnt > span:nth-child(1)")
     private WebElement showResultsForSpan;
     @FindBy(css = ".rc>.r>a")
@@ -32,24 +31,21 @@ public abstract class AbstractGoogleResultPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-
+    public abstract AbstractGoogleResultPage navigateToPageNumber(int number);
+    public abstract int calculateResultsNumber();
 
     public String getValueOfShowingResultsFor() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".sp_cnt > a:nth-child(2) > b:nth-child(1) > i:nth-child(1)")));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".sp_cnt > span:nth-child(1)")));
         return showResultsForSpan.getText() + " " + resultLink.getText();
     }
 
     protected AbstractGoogleResultPage navigateToFirstLink() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".r>a")));
         firstResultLink.click();
         return this;
     }
 
-    public abstract AbstractGoogleResultPage navigateToPageNumber(int number);
-    public abstract int calculateResultsNumber();
 
 
 }

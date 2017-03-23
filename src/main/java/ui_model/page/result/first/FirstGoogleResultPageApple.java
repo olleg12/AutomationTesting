@@ -29,8 +29,21 @@ public class FirstGoogleResultPageApple extends FirstGoogleResultPage {
 //        if (number==pageNumber){
 //            return this;
 //        }
-        WebElement pageNumberLink = driver.findElement(By.cssSelector("#nav > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > a:nth-child(1)"));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+//
+//        wait.until(ExpectedConditions.(By.cssSelector
+//                ("#nav > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child("+String.valueOf(number+1) + ") > a:nth-child(1)")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("flyr")));
+        WebElement pageNumberLink = driver.findElement(By.cssSelector
+                ("#nav > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child("+String.valueOf(number+1) + ") > a:nth-child(1)"));
+
         pageNumberLink.click();
+
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return new OtherGoogleResultPageApple(driver);
     }
 

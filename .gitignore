@@ -21,3 +21,6 @@ logs/*
 /.gradle/
 .idea/
 org/
+src/main/java/commons/
+target/generated-sources/
+target/generated-test-sources/

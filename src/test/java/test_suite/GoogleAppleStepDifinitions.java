@@ -1,6 +1,5 @@
 package test_suite;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import ui_model.page.GoogleHomePage;
@@ -14,7 +13,6 @@ import java.util.List;
  */
 public class GoogleAppleStepDifinitions {
     private GoogleHomeStepDefinition definition;
-    private GoogleHomePage googleHomePage;
     private AbstractGoogleResultPage abstractGoogleResultPage;
     private List<Integer> resultLinkNumbers;
 
@@ -32,7 +30,8 @@ public class GoogleAppleStepDifinitions {
 
     @When("^I navigate to (\\d+) page$")
     public void i_navigete_to_nd_page(int number) throws Throwable {
-        AbstractGoogleResultPage abstractGoogleResultPage = this.abstractGoogleResultPage.navigateToPageNumber(number);
+        this.abstractGoogleResultPage = this.abstractGoogleResultPage.navigateToPageNumber(number);
+        System.out.println(resultLinkNumbers);
     }
 
     @Then("^I check whether the number of results is the same on the above mentioned pages$")

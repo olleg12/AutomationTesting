@@ -33,28 +33,15 @@ public class GoogleHomeStepDefinition {
         return abstractGoogleResultPage;
     }
 
-    public void setAbstractGoogleResultPage(AbstractGoogleResultPage abstractGoogleResultPage) {
-        this.abstractGoogleResultPage = abstractGoogleResultPage;
-    }
-
-
-
-
     @Before
     public void setUp() {
-        try {
-            inputStream = new FileInputStream("src\\main\\resources\\config.properties");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        InputStream propertiesFile = getClass().getClassLoader().getResourceAsStream("config.properties");
         properties = new Properties();
         try {
-            properties.load(inputStream);
+            properties.load(propertiesFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.setProperty(properties.getProperty("web_driver_property_type_of_driver"),
-//                properties.getProperty("web_driver_property_path_to_geckodriver"));
         driver = new FirefoxDriver();
         googleHomePage = new GoogleHomePage(driver);
         googleHomePage.setProperties(properties);

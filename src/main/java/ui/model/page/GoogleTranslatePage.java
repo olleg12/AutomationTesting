@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by okunets on 21.03.2017.
  */
 public class GoogleTranslatePage extends AbstractPage {
-    private WebElement languagesDropdown;
     private WebElement languageDiv;
 
     public GoogleTranslatePage(WebDriver driver) {
@@ -20,7 +19,7 @@ public class GoogleTranslatePage extends AbstractPage {
     public GoogleTranslatePage inputApple() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("source")));
         WebElement inputField = driver.findElement(By.id("source"));
-        inputField.sendKeys(properties.getProperty("apple_query"));
+        inputField.sendKeys("Apple");
         return this;
     }
 
@@ -31,12 +30,7 @@ public class GoogleTranslatePage extends AbstractPage {
         return outputField.getText();
     }
 
-    public GoogleTranslatePage clickOnLanguagesDropdown() throws InterruptedException {
-        if (languagesDropdown == null)
-            languagesDropdown = driver.findElement(By.id(properties.getProperty("language_dropdown_id")));
-        languagesDropdown.click();
-        return this;
-    }
+
 
     public GoogleTranslatePage chooseLanguageToTranslateIn() throws InterruptedException {
         if (languageDiv == null)

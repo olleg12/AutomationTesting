@@ -1,6 +1,5 @@
 Feature: To test google
 
-
   Scenario: To test the result of translate google com query
     When I enter "translate google com" into searchfield
     And  I click on Google Search button

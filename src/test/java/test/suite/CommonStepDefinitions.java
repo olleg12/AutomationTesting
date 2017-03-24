@@ -48,8 +48,8 @@ public class CommonStepDefinitions {
 
 
     @When("^I enter \"([^\"]*)\" into searchfield$")
-    public void enterQuery(String arg1) throws Throwable {
-        googleHomePage.inputQuery(arg1);
+    public void enterQuery(String query) throws Throwable {
+        googleHomePage.inputQuery(query);
     }
 
     @And("^I click on Google Search button$")

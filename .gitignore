@@ -1,4 +1,3 @@
-.idea/*
 .gradle/*
 build/*
 classes/*
@@ -15,12 +14,10 @@ logs/*
 .project
 .settings
 
-.gradletasknamecash
 /build/
 /bin/
 /.gradle/
 .idea/
 org/
 src/main/java/commons/
-target/generated-sources/
-target/generated-test-sources/
+/target/

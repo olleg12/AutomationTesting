@@ -11,6 +11,7 @@ import ui.model.page.result.AbstractGoogleResultPage;
  * Created by okunets on 20.03.2017.
  */
 public class GoogleHomePage extends AbstractPage {
+    private static String GOOGLE_HOME_PAGE="https://www.google.com/en";
     @FindBy(css ="#lst-ib" )
     private WebElement searchBox;
     @FindBy(css = "#_fZl")
@@ -23,7 +24,7 @@ public class GoogleHomePage extends AbstractPage {
     }
 
     public GoogleHomePage navigateToHomePage() {
-        driver.navigate().to(properties.getProperty("google_home_page"));
+        driver.navigate().to(GOOGLE_HOME_PAGE);
         return this;
     }
 

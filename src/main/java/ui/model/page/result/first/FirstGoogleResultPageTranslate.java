@@ -23,11 +23,10 @@ public class FirstGoogleResultPageTranslate extends FirstGoogleResultPage {
     }
 
 
-    //todo replace multiple concrete methods with the absrtact one returning generic type
+    //todo replace multiple concrete methods with the abstract one returning generic type
     public GoogleTranslatePage clickOnFirstLink() {
         navigateToFirstLink();
         GoogleTranslatePage translatePage=new GoogleTranslatePage(driver);
-        translatePage.setProperties(properties);
         return translatePage;
 
     }

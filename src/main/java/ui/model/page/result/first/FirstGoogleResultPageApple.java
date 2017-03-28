@@ -44,9 +44,4 @@ public class FirstGoogleResultPageApple extends FirstGoogleResultPage {
         webElements.add(mapLink);
         return webElements.size();
     }
-
-
-    public AbstractGoogleResultPage clickOnFirstLink() {
-        return null;
-    }
 }

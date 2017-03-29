@@ -33,8 +33,6 @@ public class CommonStepDefinitions {
         driver.close();
     }
 
-
-
     @When("^I enter \"([^\"]*)\" into searchfield$")
     public void enterQuery(String query) throws Throwable {
         googleHomePage.inputQuery(query);
